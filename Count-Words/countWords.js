@@ -24,12 +24,12 @@ class Map {
     }
 
     set(key) {
-        var keyExists = this.has(key);
+        let keyExists = this.has(key);
         if (keyExists) {
             this.collection[key] += 1;
             return;
         }
-        var value = 1;
+        let value = 1;
         this.collection[key] = value;
         this.words++;
     }
