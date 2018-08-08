@@ -1,12 +1,12 @@
 "use strict";
 
 var Stack = require('../../DS/Stack/stack');
-var List = require('../../DS/Link-List/list');
+//var List = require('../../DS/Link-List/list');
 
-//module.exports =
 module.exports = class SyntaxChecker {
     constructor(args) {
         this.stack = new Stack(args.split(""));
+        this.arr = args.split("");
          //array.split("") is a function of global object array which splits the argument passed to array of arguments.
     }
 
@@ -21,7 +21,7 @@ module.exports = class SyntaxChecker {
     }
 
     // creates another stack (helperStack) for pushing unmatched arguments
-    checkSyntax() {
+    checkSyntax1() {
         let helperStack = new Stack();
         let tempStack = helperStack.stack; //helperStack.stack accesses the list of arguments inside the helperStack object
         let thisStack = this.stack.stack; //this.stack.stack accesses the list of arguments inside the stack object created
@@ -49,9 +49,27 @@ module.exports = class SyntaxChecker {
             return true; 
         }    
     }
+    isOpposite(c, t) {
+        return (c == "{" && t == "}") || (c == "(" && t == ")") || (c == "[" && t == "]");
+    }
+    checkSyntax() {
+        var stk = new Stack([]);
+        for (let i = 0; i < this.arr.length; i++) {
+            var t = stk.peakTop();
+            if (t != null && this.isOpposite(t, this.arr[i]) ) {
+                stk.pop();
+            } else {
+                stk.push(this.arr[i]);
+            }
+        }
+        if (stk.count() > 0) {
+            return false;
+        }
+        return true;
+    }
 }
 
-// var c = new SyntaxChecker("[{()}]");
+// var c = new SyntaxChecker("{}");
 // var bool = c.checkSyntax();
 
 // console.log(bool)

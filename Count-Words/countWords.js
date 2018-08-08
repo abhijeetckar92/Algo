@@ -7,11 +7,6 @@ class Map {
         //this.countWords(args);
     }
 
-    input(args) {
-        var stringInput = process.stdin.read();
-        constructor(stringInput);
-    }
-
     countWords(stringInput) {
         let arrayString = stringInput.split(" ");
         for (let i = 0; i < arrayString.length; i++) {
@@ -34,22 +29,13 @@ class Map {
         this.words++;
     }
 
-    // print(){
-    //     for(let i = 0 ; i < this.words ; i++){
-    //         console.log(key in this.collection);
-    //     }
-    // }
+    print() {
+        for (let key in this.collection) {
+            console.log("'"+key+"'"+ " " +"'"+this.collection[key]+"'");
+        }
+    }
 }
 
-//var stringInput = "the quick brown fox the";
-
 var map = new Map();
-
 map.countWords("the quick brown fox the");
-
-//map.input("the quick brown fox the");
-//map.countWords();
-
-//map.print();
-
-console.log(map);
+map.print();
