@@ -2,11 +2,14 @@
 var bubbleSort = require('../Bubble-Sort/bubbleSort').bubbleSort;
 var mergeSort = require('../Merge-Sort/mergeSort').mergeSort;
 var selectionSort = require('../Selection-Sort/selectionSort').selectionSort;
+var quickSort = require('../Quick-Sort/quickSort').quickSort;
+
 
 var m = {
     "bubble": bubbleSort,
     "selection": selectionSort,
-    "merge": mergeSort
+    "merge": mergeSort,
+    "quick" : quickSort
 
 };
 
